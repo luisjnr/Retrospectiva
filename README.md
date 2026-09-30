@@ -1,42 +1,31 @@
-# Nossa história
+# Retrospectiva — Menininha & Menininho
 
-Retrospectiva romântica feita em HTML, CSS e JavaScript.
+Versão em formato de apresentação, inspirada no ritmo visual de retrospectivas musicais.
+
+## Como funciona
+
+- Uma tela por vez.
+- Toque/clique para avançar.
+- Setas também funcionam.
+- No celular, swipe lateral continua funcionando como alternativa.
+- A música tenta começar quando você toca em **Começar a retrospectiva**.
 
 ## Música
 
-A página está preparada para tocar:
+O navegador bloqueia áudio automático quando a página tenta tocar música sem uma interação do usuário. Por isso, a página começa a música depois do clique em **Começar a retrospectiva**.
 
-`Legendary Lovers`
+Para usar a música que você escolheu, coloque o arquivo que você possui/autorizou usar em:
 
-Coloque o arquivo de áudio com este nome:
+`assets/legendary-lovers.mp3`
 
-```text
-assets/legendary-lovers.mp3
-```
+O nome precisa ser exatamente `legendary-lovers.mp3`.
 
-O arquivo de áudio não está incluído neste pacote.
+O projeto não inclui a faixa musical.
 
-## Estrutura
+## GitHub Pages
 
-```text
-.
-├── index.html
-├── style.css
-├── script.js
-└── assets/
-    ├── legendary-lovers.mp3
-    └── fotos/
-        ├── foto-01.jpeg
-        ├── ...
-        └── foto-10.jpeg
-```
+Suba os arquivos do projeto para um repositório e ative GitHub Pages em:
 
-## Publicar no GitHub Pages
+Settings → Pages → Deploy from a branch → `main` → `/ (root)`
 
-1. Crie um repositório no GitHub.
-2. Envie os arquivos deste projeto.
-3. Em `Settings > Pages`, selecione `Deploy from a branch`.
-4. Escolha a branch `main` e a pasta `/ (root)`.
-5. Salve e aguarde a publicação.
-
-A página foi feita pensando primeiro em celular.
+Depois é só abrir o endereço do GitHub Pages no celular.

@@ -1,186 +1,162 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#090909">
-  <meta name="description" content="Uma pequena retrospectiva da nossa história.">
-  <title>Nossa história</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ff6b35">
+<title>Menininha & Menininho</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="noise"></div>
+<div class="intro" id="intro">
+  <div class="intro-card">
+    <span class="tag">OUR WRAPPED</span>
+    <p class="mini">UMA RETROSPECTIVA DE</p>
+    <h1>Menininha<br><i>&</i> Menininho</h1>
+    <p class="intro-copy">Algumas lembranças de uma história que começou jogando Free Fire e acabou virando a nossa história.</p>
+    <button id="start">Começar a retrospectiva</button>
+    <small>A música começa depois que você tocar no botão.</small>
+  </div>
+</div>
 
-  <div id="intro" class="intro">
-    <div class="intro-inner">
-      <p class="eyebrow">UMA PEQUENA SURPRESA</p>
-      <h1>Nossa<br><span>história.</span></h1>
-      <p class="intro-text">Feita de encontros, viagens, brincadeiras e de duas pessoas que acabaram combinando mais do que imaginavam.</p>
-      <button id="startBtn" class="start-btn">Começar</button>
-      <p class="music-note">A música começa junto com a retrospectiva.</p>
-    </div>
+<audio id="music" preload="auto" loop>
+  <source src="assets/legendary-lovers.mp3" type="audio/mpeg">
+</audio>
+
+<div class="app" id="app">
+  <div class="top">
+    <div class="brand">OUR WRAPPED</div>
+    <div class="counter"><span id="count">01</span> / 10</div>
+    <button id="musicBtn" class="music">♫ <span id="musicText">MÚSICA</span></button>
   </div>
 
-  <header class="topbar">
-    <span>14.10.2021</span>
-    <button id="musicBtn" class="music-btn" aria-label="Pausar música">
-      <span class="bars"><i></i><i></i><i></i><i></i></span>
-      <span id="musicLabel">Música</span>
-    </button>
-  </header>
+  <div class="progress"><span id="progress"></span></div>
 
-  <main>
-    <section class="hero section">
-      <div class="hero-image">
-        <img src="assets/fotos/foto-10.jpeg" alt="Nós dois juntos">
-      </div>
-      <div class="hero-copy">
-        <p class="eyebrow">DESDE 14 DE OUTUBRO DE 2021</p>
-        <h2>Uma história que começou de um jeito que nenhum dos dois imaginava.</h2>
-        <div class="scroll-hint">deslize para continuar <span>↓</span></div>
+  <main id="slides">
+    <section class="slide active s-orange">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">DESDE 14.10.2021</p>
+          <h2>Uma história que começou de um jeito improvável.</h2>
+          <p>Do Free Fire para a vida real. E, sinceramente, eu não trocaria o caminho que fizemos por nada.</p>
+          <div class="hint">TOQUE PARA CONTINUAR →</div>
+        </div>
+        <div class="hero-photo"><img src="assets/fotos/foto-10.jpeg" alt="Nós dois"></div>
       </div>
     </section>
 
-    <section class="story section">
-      <div class="story-text">
-        <p class="eyebrow">01 — O COMEÇO</p>
-        <h2>Tudo começou jogando Free Fire.</h2>
-        <p>Eu tomei a iniciativa. Na verdade, tomei várias vezes.</p>
-        <p>Começamos a conversar quase do nada. Eu simplesmente decidi continuar ligando e, pouco a pouco, aquela conversa virou amizade.</p>
-      </div>
-      <div class="photo-card rotate-left">
-        <img src="assets/fotos/foto-02.jpeg" alt="Um dos nossos primeiros momentos">
+    <section class="slide s-yellow">
+      <div class="split">
+        <div class="text">
+          <p class="eyebrow">01 — O COMEÇO</p>
+          <h2>Tudo começou jogando <em>Free Fire.</em></h2>
+          <p>Eu tomei a iniciativa. Na verdade, tomei várias vezes.</p>
+          <p>Começamos a conversar quase do nada. Eu decidi continuar ligando e, aos poucos, uma amizade apareceu.</p>
+        </div>
+        <div class="polaroid tilt-left"><img src="assets/fotos/foto-02.jpeg" alt="Nós dois"></div>
       </div>
     </section>
 
-    <section class="story reverse section">
-      <div class="photo-card rotate-right">
-        <img src="assets/fotos/foto-03.jpeg" alt="Nós dois em um momento especial">
-      </div>
-      <div class="story-text">
+    <section class="slide s-lilac">
+      <div class="photo-full"><img src="assets/fotos/foto-03.jpeg" alt="Nós dois juntos"></div>
+      <div class="photo-shade"></div>
+      <div class="overlay">
         <p class="eyebrow">02 — QUANDO MUDOU</p>
-        <h2>Na terceira vez que nos encontramos, alguma coisa mudou.</h2>
-        <p>Já não era só amizade.</p>
+        <h2>Na terceira vez que nos encontramos, já não parecia só amizade.</h2>
         <p>A gente percebeu que gostava um do outro.</p>
       </div>
     </section>
 
-    <section class="full-photo section">
-      <img src="assets/fotos/foto-09.jpeg" alt="Momento espontâneo juntos">
-      <div class="overlay-caption">
-        <p class="eyebrow">E, DEPOIS, VEIO O PRIMEIRO BEIJO.</p>
-        <h2>Um daqueles momentos que ficam guardados.</h2>
+    <section class="slide s-blue">
+      <div class="date-layout">
+        <div>
+          <p class="eyebrow">03 — O DIA</p>
+          <div class="date">14<br><span>10</span><br>21</div>
+          <h2>O dia em que começou oficialmente a nossa história.</h2>
+        </div>
+        <div class="small-photo"><img src="assets/fotos/foto-04.jpeg" alt="Nós dois"></div>
       </div>
     </section>
 
-    <section class="date section">
-      <p class="eyebrow">03 — O DIA</p>
-      <div class="date-number">14.10.2021</div>
-      <h2>O dia em que começamos oficialmente a nossa história.</h2>
-      <p>Eu te pedi em namoro deitado na cama com você. Pode não ter sido o pedido mais elaborado do mundo, mas para mim aquele momento significou muito.</p>
-    </section>
-
-    <section class="memory-grid section">
-      <div class="memory-title">
-        <p class="eyebrow">04 — NOSSAS COISAS</p>
-        <h2>As pequenas coisas que viraram a nossa vida.</h2>
-      </div>
-      <div class="memory"><span>01</span><strong>Jogar juntos</strong></div>
-      <div class="memory"><span>02</span><strong>Assistir filmes</strong></div>
-      <div class="memory"><span>03</span><strong>Sair para comer</strong></div>
-      <div class="memory"><span>04</span><strong>Viajar</strong></div>
-      <div class="memory"><span>05</span><strong>Fazer cosquinha</strong></div>
-      <div class="memory special"><span>06</span><strong>“o mentiraiada da porra”</strong></div>
-      <div class="memory special"><span>07</span><strong>“mun”</strong></div>
-      <div class="memory"><span>08</span><strong>Ser menininha e menininho</strong></div>
-    </section>
-
-    <section class="photo-showcase section">
-      <div class="showcase-copy">
-        <p class="eyebrow">05 — JUNTOS</p>
-        <h2>De momentos simples a memórias que eu quero guardar para sempre.</h2>
-      </div>
-      <div class="showcase-photos">
-        <img class="p1" src="assets/fotos/foto-04.jpeg" alt="Nós dois juntos">
-        <img class="p2" src="assets/fotos/foto-06.jpeg" alt="Nós dois na praia">
-        <img class="p3" src="assets/fotos/foto-08.jpeg" alt="Nós dois juntos">
-      </div>
-    </section>
-
-    <section class="trip section">
-      <div class="trip-photo">
-        <img src="assets/fotos/foto-06.jpeg" alt="Nós dois na praia">
-      </div>
-      <div class="trip-copy">
-        <p class="eyebrow">06 — VIAJAR COM VOCÊ</p>
-        <h2>Cabo Frio.</h2>
-        <p>Conhecer a praia com você no Ano Novo foi uma daquelas experiências que eu vou guardar para sempre.</p>
-        <p>E ainda temos muitos lugares para conhecer.</p>
-      </div>
-    </section>
-
-    <section class="portrait section">
-      <div class="portrait-photo">
-        <img src="assets/fotos/foto-07.jpeg" alt="Ela">
-      </div>
-      <div class="portrait-copy">
-        <p class="eyebrow">07 — MINHA MENININHA</p>
-        <h2>Eu admiro a pessoa que você é.</h2>
-        <div class="qualities">
-          <span>Sinceridade</span>
-          <span>Bondade</span>
-          <span>Companheirismo</span>
-          <span>Seu jeito</span>
-          <span>Seu comportamento</span>
-          <span>Seu estilo</span>
+    <section class="slide s-pink">
+      <div class="center">
+        <p class="eyebrow">04 — AS NOSSAS COISAS</p>
+        <h2>Tem coisas que só fazem sentido para nós.</h2>
+        <div class="chips">
+          <span>“o mentiraiada da porra”</span>
+          <span>mun</span>
+          <span>cão chupador de manga</span>
+          <span>cosquinha</span>
+          <span>jogar juntos</span>
+          <span>filmes</span>
+          <span>sair para comer</span>
         </div>
       </div>
     </section>
 
-    <section class="us section">
-      <div class="us-photo large">
-        <img src="assets/fotos/foto-01.jpeg" alt="Nós dois">
-      </div>
-      <div class="us-copy">
-        <p class="eyebrow">08 — MENININHO + MENININHA</p>
-        <h2>Eu nunca imaginei que existiria alguém que combinasse tanto comigo quanto você.</h2>
-        <p>Você é minha parceira. Minha companheira. A pessoa com quem eu quero dividir as conquistas, os planos, as viagens, as brincadeiras e a vida.</p>
+    <section class="slide s-purple">
+      <div class="center white">
+        <p class="eyebrow">05 — VOCÊ</p>
+        <h2 class="giant">Eu admiro a sua<br><i>sinceridade.</i></h2>
+        <p class="big-copy">A sua bondade. O seu companheirismo. O seu jeito de ser. O seu comportamento. E, claro, esse seu estilo que eu adoro.</p>
       </div>
     </section>
 
-    <section class="future section">
-      <div class="future-inner">
-        <p class="eyebrow">09 — O QUE AINDA VEM</p>
-        <h2>A nossa história ainda está longe de terminar.</h2>
-        <p>Ainda temos muitos lugares para conhecer.</p>
-        <p>Muitos planos para realizar.</p>
-        <p>Muitas coisas para conquistar.</p>
-        <p>Muitas histórias que ainda nem aconteceram.</p>
-        <p class="highlight">E eu quero viver tudo isso com você.</p>
+    <section class="slide s-cream">
+      <div class="trip-layout">
+        <div class="trip-photo"><img src="assets/fotos/foto-05.jpeg" alt="Viagem"></div>
+        <div class="trip-copy">
+          <p class="eyebrow">06 — JUNTOS PELO MUNDO</p>
+          <h2>Cabo<br>Frio.</h2>
+          <p>Conhecer a praia com você no Ano Novo foi uma daquelas lembranças que eu quero guardar para sempre.</p>
+        </div>
       </div>
     </section>
 
-    <section class="final section">
-      <div class="final-image">
-        <img src="assets/fotos/foto-05.jpeg" alt="Nós dois">
+    <section class="slide s-coral">
+      <div class="trip-layout reverse-mobile">
+        <div class="trip-copy">
+          <p class="eyebrow">07 — E AINDA TEM MAIS</p>
+          <h2>Porto<br>Seguro.</h2>
+          <p>Porque viajar com você faz qualquer lugar ficar ainda melhor.</p>
+        </div>
+        <div class="trip-photo tilt-right"><img src="assets/fotos/foto-06.jpeg" alt="Viagem"></div>
       </div>
-      <div class="final-copy">
-        <p class="eyebrow">PARA MINHA MENININHA</p>
-        <h2>Eu te amo muito.</h2>
-        <p>Se eu pudesse voltar para o começo, sabendo tudo o que viveríamos depois, eu ainda escolheria você.</p>
-        <p class="signature">Do seu menininho.</p>
-        <button class="restart-btn" id="restartBtn">Recomeçar a história</button>
+    </section>
+
+    <section class="slide s-green">
+      <div class="collage">
+        <img class="c c1" src="assets/fotos/foto-07.jpeg" alt="Nós dois">
+        <img class="c c2" src="assets/fotos/foto-08.jpeg" alt="Nós dois">
+        <img class="c c3" src="assets/fotos/foto-09.jpeg" alt="Nós dois">
+      </div>
+      <div class="collage-text">
+        <p class="eyebrow">08 — O QUE EU MAIS GOSTO</p>
+        <h2>É poder viver as coisas com a minha parceira.</h2>
+        <p>Nas brincadeiras, nos filmes, nos jogos, nas saídas, nas viagens e até nas nossas pequenas confusões.</p>
+      </div>
+    </section>
+
+    <section class="slide s-final">
+      <div class="final-photo"><img src="assets/fotos/foto-01.jpeg" alt="Nós dois"></div>
+      <div class="final-shade"></div>
+      <div class="final-text">
+        <p class="eyebrow">09 — DE MENININHO PARA MENININHA</p>
+        <h2>Eu amo muito você.</h2>
+        <p>Eu nunca tinha imaginado que existiria uma pessoa que combinasse tanto comigo como você combina.</p>
+        <p>Você é minha parceira, minha companheira. E eu quero viver tudo isso com você: conquistar nossos sonhos, construir nossa vida e continuar escolhendo você.</p>
+        <strong>Para sempre, menininha.</strong>
       </div>
     </section>
   </main>
 
-  <audio id="music" loop preload="metadata">
-    <source src="assets/legendary-lovers.mp3" type="audio/mpeg">
-  </audio>
-
-  <script src="script.js"></script>
+  <button class="nav prev" id="prev" aria-label="Anterior">‹</button>
+  <button class="nav next" id="next" aria-label="Próximo">›</button>
+  <div class="tap">TOQUE NA TELA PARA AVANÇAR</div>
+</div>
+<script src="script.js"></script>
 </body>
 </html>
