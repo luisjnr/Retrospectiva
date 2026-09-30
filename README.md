@@ -1,31 +1,19 @@
-# Retrospectiva — Menininha & Menininho
+# Nossa história — Retrospectiva interativa
 
-Versão em formato de apresentação, inspirada no ritmo visual de retrospectivas musicais.
-
-## Como funciona
-
-- Uma tela por vez.
-- Toque/clique para avançar.
-- Setas também funcionam.
-- No celular, swipe lateral continua funcionando como alternativa.
-- A música tenta começar quando você toca em **Começar a retrospectiva**.
+Este pacote contém o projeto completo: HTML, CSS, JavaScript e as 10 fotos.
 
 ## Música
-
-O navegador bloqueia áudio automático quando a página tenta tocar música sem uma interação do usuário. Por isso, a página começa a música depois do clique em **Começar a retrospectiva**.
-
-Para usar a música que você escolheu, coloque o arquivo que você possui/autorizou usar em:
+A página tenta tocar a música depois do clique em **Começar**. Para isso, coloque o MP3 que você tem autorização para usar neste caminho exato:
 
 `assets/legendary-lovers.mp3`
 
-O nome precisa ser exatamente `legendary-lovers.mp3`.
+O arquivo de áudio não vem incluído no pacote. Sem ele, a retrospectiva funciona, mas não haverá som.
 
-O projeto não inclui a faixa musical.
+## Como testar
+Extraia o ZIP e abra `index.html` no navegador. Para testar como site publicado, envie todos os arquivos e pastas ao GitHub e ative GitHub Pages em **Settings → Pages → Deploy from a branch → main → /(root)**.
 
-## GitHub Pages
-
-Suba os arquivos do projeto para um repositório e ative GitHub Pages em:
-
-Settings → Pages → Deploy from a branch → `main` → `/ (root)`
-
-Depois é só abrir o endereço do GitHub Pages no celular.
+## Navegação
+- Toque/clique na tela ou na seta direita para avançar.
+- Use a seta esquerda para voltar.
+- No computador, também funcionam as setas do teclado.
+- No celular, deslizar é opcional.
