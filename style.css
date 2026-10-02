@@ -923,3 +923,693 @@ main > .final.active-slide { display: grid; }
   main > .future.active-slide { display: grid; }
   main > .final.active-slide { display: flex; }
 }
+
+
+/* =========================================================
+   MOBILE WRAPPED — mobile-only layer
+   Everything below is scoped to screens <= 760px.
+   Desktop styles above remain untouched.
+   ========================================================= */
+@media screen and (max-width: 760px) {
+  :root {
+    --mobile-pad: 18px;
+    --mobile-safe-bottom: max(18px, env(safe-area-inset-bottom));
+  }
+
+  html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    width: 100%;
+    height: 100%;
+    min-height: 100dvh;
+    overflow: hidden !important;
+    overscroll-behavior: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  /* Intro: keeps the original visual identity, but is composed for a phone. */
+  .intro {
+    width: 100%;
+    height: 100dvh;
+    min-height: 100dvh;
+    padding: max(24px, env(safe-area-inset-top)) var(--mobile-pad) var(--mobile-safe-bottom);
+    overflow: hidden;
+  }
+
+  .intro-inner {
+    width: 100%;
+    max-width: 520px;
+  }
+
+  .intro .eyebrow {
+    font-size: clamp(8px, 2.5vw, 10px);
+    line-height: 1.35;
+    letter-spacing: .16em;
+    margin-bottom: 15px;
+  }
+
+  .intro h1 {
+    font-size: clamp(56px, 17vw, 88px);
+    line-height: .82;
+    letter-spacing: -.06em;
+    max-width: 100%;
+  }
+
+  .intro-text {
+    width: 100%;
+    max-width: 390px;
+    margin: 30px 0 22px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .start-btn {
+    min-height: 50px;
+    min-width: 190px;
+    padding: 14px 24px;
+    font-size: 12px;
+    box-shadow: 0 12px 35px rgba(23,18,23,.22);
+  }
+
+  .music-note {
+    max-width: 300px;
+    margin-top: 13px;
+    font-size: 10px;
+    line-height: 1.5;
+  }
+
+  /* Fixed controls respect notches/home indicators. */
+  .topbar {
+    top: env(safe-area-inset-top);
+    padding: 10px 12px;
+    font-size: 9px;
+    pointer-events: none;
+  }
+
+  .topbar > * {
+    pointer-events: auto;
+  }
+
+  .music-btn {
+    min-height: 38px;
+    padding: 9px 11px;
+    gap: 7px;
+    font-size: 9px;
+    box-shadow: 0 6px 18px rgba(23,18,23,.10);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .wrapped-progress {
+    top: 0;
+    height: 3px;
+  }
+
+  .slide-counter {
+    top: calc(env(safe-area-inset-top) + 12px);
+    font-size: 9px;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  /*
+    The navigation controls are intentionally larger on phones.
+    They stay low enough not to collide with the top controls and
+    high enough to remain above the home indicator.
+  */
+  .slide-nav {
+    top: auto;
+    bottom: calc(18px + env(safe-area-inset-bottom));
+    transform: none !important;
+    width: 46px;
+    height: 46px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(23,18,23,.12);
+    background: rgba(255,255,255,.62);
+    box-shadow: 0 8px 25px rgba(23,18,23,.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    font-size: 27px;
+    line-height: 1;
+    z-index: 90;
+    touch-action: manipulation;
+  }
+
+  .slide-nav:active {
+    transform: scale(.92) !important;
+    background: rgba(255,255,255,.9);
+  }
+
+  .slide-prev { left: 14px; }
+  .slide-next { right: 14px; }
+
+  .slide-hint {
+    bottom: calc(24px + env(safe-area-inset-bottom));
+    left: 50%;
+    max-width: 45vw;
+    text-align: center;
+    font-size: 7px;
+    letter-spacing: .12em;
+    line-height: 1.3;
+  }
+
+  /*
+    Each slide becomes a true one-screen composition.
+    No page scroll is needed; the existing click-to-next logic
+    remains the primary interaction.
+  */
+  main {
+    position: relative;
+    width: 100%;
+    height: 100dvh;
+    min-height: 100dvh;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  main > .section,
+  main > .section.active-slide {
+    width: 100%;
+    height: 100dvh;
+    min-height: 100dvh;
+    max-height: 100dvh;
+    overflow: hidden;
+    padding-top: calc(58px + env(safe-area-inset-top));
+    padding-right: var(--mobile-pad);
+    padding-bottom: calc(76px + env(safe-area-inset-bottom));
+    padding-left: var(--mobile-pad);
+  }
+
+  main > .section.active-slide {
+    animation: mobileWrappedIn .48s cubic-bezier(.2,.8,.2,1) both;
+    will-change: transform, opacity;
+  }
+
+  @keyframes mobileWrappedIn {
+    from {
+      opacity: 0;
+      transform: translate3d(28px, 0, 0) scale(.985);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+  }
+
+  /* Slide 1 — hero */
+  main > .hero.active-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: 14px;
+    padding-top: calc(65px + env(safe-area-inset-top));
+  }
+
+  main > .hero .hero-image {
+    width: min(82vw, 330px);
+    height: clamp(220px, 37dvh, 330px);
+    flex: 0 0 auto;
+    align-self: center;
+    border-radius: 3px;
+    box-shadow: 0 18px 45px rgba(23,18,23,.18);
+  }
+
+  main > .hero .hero-copy {
+    width: 100%;
+    min-width: 0;
+    align-self: stretch;
+  }
+
+  main > .hero .hero-copy h2 {
+    max-width: 100%;
+    font-size: clamp(31px, 9.5vw, 45px);
+    line-height: .96;
+  }
+
+  main > .hero .scroll-hint {
+    margin-top: 14px;
+    font-size: 8px;
+  }
+
+  /* Text slides */
+  main > .story.active-slide,
+  main > .story.reverse.active-slide,
+  main > .trip.active-slide,
+  main > .portrait.active-slide,
+  main > .us.active-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: 13px;
+  }
+
+  main > .story .story-text,
+  main > .trip .trip-copy,
+  main > .portrait .portrait-copy,
+  main > .us .us-copy {
+    width: 100%;
+    min-width: 0;
+  }
+
+  main > .story .photo-card,
+  main > .story.reverse .photo-card {
+    order: 0;
+    width: min(70vw, 275px);
+    height: clamp(190px, 34dvh, 275px);
+    max-height: none;
+    align-self: center;
+    flex: 0 0 auto;
+    box-shadow: 0 16px 38px rgba(23,18,23,.16);
+  }
+
+  main > .story .story-text { order: 1; }
+
+  main > .section .eyebrow {
+    margin-bottom: 9px;
+    font-size: 8px;
+    line-height: 1.3;
+    letter-spacing: .16em;
+  }
+
+  main > .story h2,
+  main > .trip-copy h2,
+  main > .portrait-copy h2,
+  main > .us-copy h2 {
+    font-size: clamp(29px, 8.5vw, 43px);
+    line-height: .98;
+  }
+
+  main > .story-text > p:not(.eyebrow),
+  main > .trip-copy p:not(.eyebrow),
+  main > .us-copy > p:last-child {
+    font-size: 11px;
+    line-height: 1.5;
+    margin: 9px 0 0;
+  }
+
+  /* Full image */
+  main > .full-photo.active-slide {
+    display: block;
+    padding: 0;
+  }
+
+  main > .full-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  main > .full-photo::after {
+    background: linear-gradient(0deg, rgba(0,0,0,.78), rgba(0,0,0,.05) 70%);
+  }
+
+  main > .full-photo .overlay-caption {
+    left: var(--mobile-pad);
+    right: var(--mobile-pad);
+    bottom: calc(78px + env(safe-area-inset-bottom));
+    max-width: none;
+  }
+
+  main > .full-photo .overlay-caption h2 {
+    font-size: clamp(34px, 10vw, 48px);
+    line-height: .94;
+  }
+
+  /* Date */
+  main > .date.active-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  main > .date-number {
+    font-size: clamp(51px, 15vw, 75px);
+    line-height: .9;
+    margin: 10px 0 18px;
+    letter-spacing: -.065em;
+    white-space: nowrap;
+  }
+
+  main > .date h2 {
+    max-width: 100%;
+    font-size: clamp(27px, 8vw, 39px);
+    line-height: .98;
+  }
+
+  main > .date > p:last-child {
+    max-width: 100%;
+    margin-top: 14px;
+    font-size: 11px;
+    line-height: 1.55;
+  }
+
+  /* Memories grid */
+  main > .memory-grid.active-slide {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto repeat(4, minmax(0, 1fr));
+    align-content: stretch;
+    gap: 5px;
+    padding-top: calc(62px + env(safe-area-inset-top));
+    padding-bottom: calc(70px + env(safe-area-inset-bottom));
+  }
+
+  main > .memory-grid .memory-title {
+    grid-column: 1 / -1;
+    min-height: 0;
+    padding: 7px 8px 8px;
+  }
+
+  main > .memory-grid .memory-title h2 {
+    font-size: clamp(27px, 8vw, 37px);
+    line-height: .95;
+  }
+
+  main > .memory-grid .memory {
+    min-height: 0;
+    padding: 9px 10px;
+    border-radius: 2px;
+    justify-content: space-between;
+  }
+
+  main > .memory-grid .memory span {
+    font-size: 7px;
+  }
+
+  main > .memory-grid .memory strong {
+    font-size: clamp(12px, 3.6vw, 16px);
+    line-height: 1.05;
+  }
+
+  /* Photo collage */
+  main > .photo-showcase.active-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  main > .photo-showcase .showcase-copy {
+    width: 100%;
+  }
+
+  main > .photo-showcase .showcase-copy h2 {
+    font-size: clamp(28px, 8vw, 40px);
+    line-height: .97;
+  }
+
+  main > .photo-showcase .showcase-photos {
+    width: 100%;
+    height: clamp(265px, 43dvh, 365px);
+    flex: 0 0 auto;
+  }
+
+  main > .photo-showcase .showcase-photos img {
+    width: 55%;
+    height: 62%;
+    box-shadow: 0 14px 35px rgba(0,0,0,.24);
+  }
+
+  main > .photo-showcase .showcase-photos .p1 { top: 0; left: 2%; }
+  main > .photo-showcase .showcase-photos .p2 { top: 16%; right: 2%; }
+  main > .photo-showcase .showcase-photos .p3 { bottom: 0; left: 16%; }
+
+  /* Trips / portrait / us */
+  main > .trip .trip-photo,
+  main > .portrait .portrait-photo,
+  main > .us .us-photo.large {
+    width: min(72vw, 285px);
+    height: clamp(200px, 35dvh, 290px);
+    max-height: none;
+    align-self: center;
+    flex: 0 0 auto;
+    box-shadow: 0 16px 38px rgba(23,18,23,.15);
+  }
+
+  main > .trip-copy h2 {
+    margin-bottom: 6px;
+    font-size: clamp(46px, 13vw, 68px);
+  }
+
+  main > .trip-copy p:not(.eyebrow) {
+    font-size: 11px;
+    line-height: 1.55;
+    margin: 8px 0 0;
+  }
+
+  main > .portrait .qualities {
+    gap: 5px;
+    margin-top: 13px;
+  }
+
+  main > .portrait .qualities span {
+    padding: 7px 9px;
+    font-size: 9px;
+    line-height: 1;
+  }
+
+  main > .us-copy > p:last-child {
+    font-size: 11px;
+    line-height: 1.55;
+    margin-top: 12px;
+  }
+
+  /* Future */
+  main > .future.active-slide {
+    display: grid;
+    place-items: center;
+    text-align: center;
+  }
+
+  main > .future-inner {
+    width: 100%;
+    max-width: 420px;
+  }
+
+  main > .future h2 {
+    font-size: clamp(35px, 10vw, 49px);
+    line-height: .95;
+    margin-bottom: 22px;
+  }
+
+  main > .future p:not(.eyebrow) {
+    font-size: 11px;
+    line-height: 1.35;
+    margin: 6px 0;
+  }
+
+  main > .future .highlight {
+    font-size: clamp(22px, 6.5vw, 31px);
+    line-height: 1;
+    margin-top: 22px;
+  }
+
+  /* Final */
+  main > .final.active-slide {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+
+  main > .final .final-image {
+    width: 100%;
+    height: 39dvh;
+    min-height: 0;
+    flex: 0 0 39dvh;
+  }
+
+  main > .final .final-copy {
+    min-height: 0;
+    height: 61dvh;
+    flex: 1 1 auto;
+    justify-content: center;
+    padding: 22px 24px calc(78px + env(safe-area-inset-bottom));
+  }
+
+  main > .final h2 {
+    font-size: clamp(50px, 15vw, 72px);
+    line-height: .9;
+  }
+
+  main > .final .final-copy > p:not(.eyebrow):not(.signature) {
+    margin-top: 12px;
+    font-size: 11px;
+    line-height: 1.5;
+    max-width: 100%;
+  }
+
+  main > .final .signature {
+    margin-top: 12px;
+    font-size: 20px;
+  }
+
+  main > .final .restart-btn {
+    min-height: 43px;
+    margin-top: 16px;
+    padding: 11px 17px;
+    font-size: 10px;
+    align-self: flex-start;
+  }
+
+  /* Compact phones: reduce vertical density without changing desktop. */
+  @media (max-height: 700px) {
+    main > .hero .hero-image {
+      height: 30dvh;
+    }
+
+    main > .story .photo-card,
+    main > .story.reverse .photo-card,
+    main > .trip .trip-photo,
+    main > .portrait .portrait-photo,
+    main > .us .us-photo.large {
+      height: 27dvh;
+    }
+
+    main > .story h2,
+    main > .trip-copy h2,
+    main > .portrait-copy h2,
+    main > .us-copy h2 {
+      font-size: clamp(27px, 7.5vw, 38px);
+    }
+
+    main > .story-text > p:not(.eyebrow),
+    main > .trip-copy p:not(.eyebrow),
+    main > .us-copy > p:last-child {
+      font-size: 10px;
+      line-height: 1.35;
+    }
+
+    main > .photo-showcase .showcase-photos {
+      height: 34dvh;
+    }
+
+    main > .final .final-image {
+      height: 34dvh;
+      flex-basis: 34dvh;
+    }
+
+    main > .final .final-copy {
+      height: 66dvh;
+    }
+  }
+
+  /* Landscape phones: avoid the tall portrait compositions. */
+  @media (orientation: landscape) and (max-height: 560px) {
+    .intro {
+      padding: 18px 28px;
+    }
+
+    .intro h1 {
+      font-size: clamp(42px, 10vw, 65px);
+    }
+
+    .intro-text {
+      margin: 15px 0;
+      max-width: 520px;
+      font-size: 11px;
+    }
+
+    .music-note { display: none; }
+
+    main > .section {
+      padding-top: 48px;
+      padding-bottom: 55px;
+    }
+
+    main > .hero.active-slide,
+    main > .story.active-slide,
+    main > .story.reverse.active-slide,
+    main > .trip.active-slide,
+    main > .portrait.active-slide,
+    main > .us.active-slide {
+      flex-direction: row;
+      align-items: center;
+      gap: 20px;
+    }
+
+    main > .hero .hero-image,
+    main > .story .photo-card,
+    main > .story.reverse .photo-card,
+    main > .trip .trip-photo,
+    main > .portrait .portrait-photo,
+    main > .us .us-photo.large {
+      width: 34vw;
+      height: 70vh;
+      max-height: 70vh;
+      flex: 0 0 34vw;
+    }
+
+    main > .hero .hero-copy,
+    main > .story .story-text,
+    main > .trip .trip-copy,
+    main > .portrait .portrait-copy,
+    main > .us .us-copy {
+      flex: 1;
+    }
+
+    main > .hero .hero-copy h2,
+    main > .story h2,
+    main > .trip-copy h2,
+    main > .portrait-copy h2,
+    main > .us-copy h2 {
+      font-size: clamp(25px, 5vw, 38px);
+    }
+
+    main > .story-text > p:not(.eyebrow),
+    main > .trip-copy p:not(.eyebrow),
+    main > .us-copy > p:last-child {
+      font-size: 10px;
+      line-height: 1.35;
+    }
+
+    main > .photo-showcase.active-slide {
+      flex-direction: row;
+      align-items: center;
+      gap: 25px;
+    }
+
+    main > .photo-showcase .showcase-copy {
+      width: 42%;
+    }
+
+    main > .photo-showcase .showcase-photos {
+      width: 58%;
+      height: 70vh;
+    }
+
+    main > .memory-grid.active-slide {
+      padding-top: 45px;
+      padding-bottom: 55px;
+    }
+
+    main > .final.active-slide {
+      flex-direction: row;
+    }
+
+    main > .final .final-image {
+      width: 45%;
+      height: 100%;
+      flex-basis: 45%;
+    }
+
+    main > .final .final-copy {
+      width: 55%;
+      height: 100%;
+      padding: 45px 25px 55px;
+    }
+
+    main > .final h2 {
+      font-size: clamp(42px, 8vw, 65px);
+    }
+  }
+}
