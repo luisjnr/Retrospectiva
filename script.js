@@ -146,7 +146,7 @@
       Dividimos a tela para que toques na margem esquerda voltem o slide
       e toques do centro para a direita avancem a história.
     */
-    document.addEventListener("click", (event) => {
+	document.addEventListener("click", (event) => {
       if (!experienceStarted || ignoreNextClick || isControl(event.target)) return;
       
       const screenWidth = window.innerWidth;
