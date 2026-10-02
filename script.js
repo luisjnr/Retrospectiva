@@ -49,7 +49,7 @@
 
       hint.textContent = current === sections.length - 1
         ? "FIM DA RETROSPECTIVA · VOLTE PARA REVER"
-        : "TOQUE NA TELA OU NA SETA PARA AVANÇAR";
+        : "TOQUE NAS LATERAIS DA TELA PARA NAVEGAR";
     }
 
     function goToSlide(nextIndex) {
@@ -142,14 +142,23 @@
     });
 
     /*
-      The original interaction is preserved:
-      tapping/clicking the slide advances to the next screen.
-      Controls themselves are excluded so they never trigger a
-      second navigation.
+      Algoritmo Mobile (Spotify/Instagram style):
+      Dividimos a tela para que toques na margem esquerda voltem o slide
+      e toques do centro para a direita avancem a história.
     */
     document.addEventListener("click", (event) => {
       if (!experienceStarted || ignoreNextClick || isControl(event.target)) return;
-      goToSlide(current + 1);
+      
+      const screenWidth = window.innerWidth;
+      const clickX = event.clientX;
+      
+      // Se clicou nos primeiros 30% da tela (lado esquerdo), volta 1 slide.
+      if (clickX < screenWidth * 0.30) {
+        goToSlide(current - 1);
+      } else {
+        // Se clicou no resto da tela, avança.
+        goToSlide(current + 1);
+      }
     });
 
     document.addEventListener("keydown", (event) => {
@@ -170,7 +179,7 @@
       }
     });
 
-    /* Optional swipe support; tap/click remains the main navigation. */
+    /* Suporte a swipe preservado para arrastar as páginas. */
     document.addEventListener("touchstart", (event) => {
       if (!experienceStarted) return;
       const touch = event.changedTouches[0];

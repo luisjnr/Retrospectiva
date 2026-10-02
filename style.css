@@ -20,6 +20,12 @@ body {
   color: #f6f3ee;
   font-family: "DM Sans", sans-serif;
   overflow-x: hidden;
+  
+  /* Bloqueios essenciais para formato mobile "Stories" */
+  -webkit-tap-highlight-color: transparent; 
+  -webkit-touch-callout: none; 
+  -webkit-user-select: none; 
+  user-select: none; 
 }
 
 body.locked {
@@ -895,7 +901,6 @@ main > .final .final-copy { padding: 6vw; }
   main > .section.active-slide { animation: none; }
 }
 
-
 /* Preserve each slide's intended layout while only one is visible. */
 main > .hero.active-slide { display: grid; }
 main > .story.active-slide { display: grid; }
@@ -923,7 +928,6 @@ main > .final.active-slide { display: grid; }
   main > .future.active-slide { display: grid; }
   main > .final.active-slide { display: flex; }
 }
-
 
 /* =========================================================
    MOBILE WRAPPED — mobile-only layer
